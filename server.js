@@ -34,8 +34,20 @@ const EBAY_CLIENT_SECRET = isProduction
 const CLOTHING_CATEGORY_ID = '11450'; // Vestiario e accessori (potrebbe essere diverso in base al marketplace)
 
 // === Configurazione CORS ===
+const allowedOrigins = [
+    'http://localhost:3000', // Per lo sviluppo locale
+    'https://wehereofficial.vercel.app' // <-- AGGIUNGI QUI L'URL DEL TUO FRONTEND VERCEL!
+];
+
 const corsOptions = {
-    origin: 'http://localhost:3000',
+    origin: function (origin, callback) {
+        // Permetti richieste senza origin (come Postman o curl) o se l'origin è nella lista
+        if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
     optionsSuccessStatus: 200
 };
 app.use(cors(corsOptions));
