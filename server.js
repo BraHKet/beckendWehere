@@ -35,7 +35,6 @@ const CLOTHING_CATEGORY_ID = '11450'; // Vestiario e accessori (potrebbe essere 
 
 // === Configurazione CORS ===
 const allowedOrigins = [
-    'http://localhost:3000', // Per lo sviluppo locale
     'https://wehereofficial.vercel.app' // <-- AGGIUNGI QUI L'URL DEL TUO FRONTEND VERCEL!
 ];
 
